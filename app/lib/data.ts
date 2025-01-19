@@ -37,6 +37,10 @@ export async function fetchLatestInvoices() {
       ORDER BY invoices.date DESC
       LIMIT 5`;
 
+    // Artificially delay a response for demo purposes.
+    // Don't do this in production :)
+    await new Promise((resolve) => setTimeout(resolve, 3500));
+
     const latestInvoices = data.rows.map((invoice) => ({
       ...invoice,
       amount: formatCurrency(invoice.amount),
